@@ -3,13 +3,17 @@ import React from 'react'
 import Title from './Title'
 import Subtitle from './Subtitle'
 
-const BlockCard = ({style}) => {
-  return (
+const BlockCard = ({ style, imageStyle, item }) => {
+  const {thumbnail, title, desc} = item;
+    return (
     <View style={[styles.container, style]}>
-        <Image source={require('../../assets/random-content.png')} style={styles.image}/>  
+        <Image 
+        source={{uri: thumbnail}} 
+        style={[styles.image, imageStyle]}
+        />  
         <View style={styles.contentContainer}>
-            <Title>Some Title</Title>
-            <Subtitle>Some description</Subtitle>
+            <Title>{title}</Title>
+            <Subtitle>{desc}</Subtitle>
         </View>
     </View>
   )

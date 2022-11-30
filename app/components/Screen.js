@@ -1,12 +1,12 @@
-import { View, StyleSheet, StatusBar } from 'react-native'
+import { ScrollView, StyleSheet, StatusBar } from 'react-native'
 import React from 'react'
 
 
 const Screen = ({children}) => {
   return (
-    <View style= {styles.container}>
+    <ScrollView style= {styles.container}>
         {children}
-    </View>
+    </ScrollView>
   )
 }
 
