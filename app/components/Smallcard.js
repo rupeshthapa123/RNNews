@@ -1,12 +1,20 @@
 import { Dimensions, StyleSheet } from 'react-native'
 import React from 'react'
 import BlockCard from "./BlockCard"
+import ViewMore from './ViewMore'
 
 const {width} = Dimensions.get("window")
 
 const Smallcard = ({item}) => {
-  return <BlockCard item={item} style={styles.container}/>
-}
+    
+    if(item.type === "viewMore"){
+        return <ViewMore style={styles.viewMore}/>
+    }
+
+    return (
+        <BlockCard item={item} style={styles.container}/>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -17,6 +25,10 @@ const styles = StyleSheet.create({
     image:{
         height: 100,
     },
+    viewMore:{
+        width: width / 2,
+        height: 200,
+    }
 });
 
 export default Smallcard;
