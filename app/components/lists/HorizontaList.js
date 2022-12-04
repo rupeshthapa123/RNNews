@@ -1,9 +1,11 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
-import Title from './Title'
-import Smallcard from './Smallcard'
+import Title from '../common/Title'
+import Smallcard from '../cards/Smallcard'
+import {useNavigation} from "@react-navigation/native"
 
-const HorizontaList = ({title, data}) => {
+const HorizontaList = ({ title, data }) => {
+    const navigation = useNavigation();
     return (
     <>
     <Title size={20}>{title}</Title>
@@ -13,7 +15,8 @@ const HorizontaList = ({title, data}) => {
     keyExtractor={item => item.id} 
     horizontal 
     showsHorizontalScrollIndicator={false} 
-    renderItem={({item}) => <Smallcard item={item} />}
+    renderItem={({item}) => 
+    <Smallcard onPress={() => navigation.push('NewsDetail', {item})} item={item} />}
     />
     </View>
     </>

@@ -1,5 +1,5 @@
 import React from 'react'
-import HorizontaList from './HorizontaList'
+import HorizontaList from './lists/HorizontaList'
 
 const BreakingNews = ({ data }) => {
   return <HorizontaList title='Breaking News' data={data} />;

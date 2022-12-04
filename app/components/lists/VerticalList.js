@@ -1,17 +1,21 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import Title from './Title'
+import Title from '../common/Title'
 
-import VerticalCard from './VerticalCard';
+import VerticalCard from '../cards/VerticalCard';
+import {useNavigation} from "@react-navigation/native";
+
 
 const VerticalList = ({ title, data}) => {
+    const navigation = useNavigation();
     return (
         <View>
-            <Title>{title}</Title>
+            {title && <Title>{title}</Title>}
             <View style={styles.container}>
                 {data.map(item => 
-                (<VerticalCard item={item} key={item.id} />
-                ))}
+                (<VerticalCard item={item} key={item.id}
+                    onPress={() => navigation.navigate('NewsDetail', {item})}
+                    />))}
             </View>
         </View>
     );

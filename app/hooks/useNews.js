@@ -8,6 +8,7 @@ export default useNews = () => {
     const [politicalNews, setPoliticalNews] = useState([]);
     const [entertainmentNews, setEntertainmentNews] = useState([]);
     const qty = 5;
+    const [loading, setLoading] = useState(false);
 
     const filterFeatured = (data) => {
         return [...data].filter(item => item.featured === 'on').reverse()[0];
@@ -27,6 +28,7 @@ export default useNews = () => {
     }
 
     const filterMultipleNews = async () => {
+        setLoading(true)
         const allNews = await newsAPI.getAll()
 
         setFeaturedNews(filterFeatured(allNews));
@@ -34,9 +36,7 @@ export default useNews = () => {
         setPoliticalNews(filterByCategory(allNews, 'political'));
         setTechNews(filterByCategory(allNews, 'tech'));
         setEntertainmentNews(filterByCategory(allNews, 'entertainment'));
-
-        // allNews.filter(item => item.featured === 'tech')
-
+        setLoading(false)
     }
     useEffect(() => {
         filterMultipleNews()
@@ -47,6 +47,7 @@ export default useNews = () => {
         breakingNews,
         techNews,
         politicalNews,
-        entertainmentNews
+        entertainmentNews,
+        loading
     ];
 };
