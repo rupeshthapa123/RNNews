@@ -17,14 +17,14 @@ const SearchModel = ({ visible, data, notFound }) => {
                 {justifyContent:'center', alignItems:'center'}, 
             ]}
             >
-                <Text>{notFound}</Text>
+                <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{notFound}</Text>
             </View>
         )
     
         return (
         <View style={styles.container}>
             <ScrollView keyboardDismissMode='on-drag' keyboardShouldPersistTaps='always'>
-                {data.map((item) => <FlatCard item={item} key={item.id} onPress={() => navigation.navigate('NewsDetail', { item })} />)}
+                {data.map((item) =>(<FlatCard item={item} key={item.id} onPress={() => navigation.navigate('NewsDetail', { item })} />))}
             </ScrollView>
         </View>
     );

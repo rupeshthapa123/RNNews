@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
 import SearchModel from "../common/SearchModel";
 import newsAPI from "../../api/newsAPI";
@@ -7,21 +7,21 @@ let timeOutId;
 
 const debounce = (func, delay) => {
     return (...args) => {
-        if(timeOutId) clearTimeout(timeOutId);
+        if (timeOutId) clearTimeout(timeOutId);
         timeOutId = setTimeout(() => {
             func.apply(null, args)
         }, delay);
     }
 }
 
-const SearchBar = ({setSearchFocused}) => {
+const SearchBar = ({ setSearchFocused }) => {
     const [query, setQuery] = useState('');
     const [visible, setVisible] = useState(false);
     const [data, setData] = useState([]);
     const [notFound, setNotFound] = useState('');
 
-    const handleChange = ({nativeEvent}) => {
-        const {text} = nativeEvent;
+    const handleChange = ({ nativeEvent }) => {
+        const { text } = nativeEvent;
         setQuery(text);
         setVisible(true);
         debounceSearch(query);
@@ -34,7 +34,7 @@ const SearchBar = ({setSearchFocused}) => {
             setData(res.news);
         }
 
-        if(!res.success){
+        if (!res.success) {
             setNotFound(res.message);
         }
     }
@@ -44,18 +44,21 @@ const SearchBar = ({setSearchFocused}) => {
     return (
         <>
             <View style={styles.container}>
-                <TextInput value={query} style={styles.searchInput} placeholder="Search here...." 
-                onChange={handleChange}
-                onFocus = {() => {
-                    setSearchFocused(true);
-                }}
-                onBlur = {() => {
-                    setSearchFocused(false);
-                    setQuery('');
-                    setVisible(false);
-                    setData([]);
-                    setNotFound('');
-                }}
+                <TextInput
+                    value={query}
+                    style={styles.searchInput}
+                    placeholder="Search here...."
+                    onChange={handleChange}
+                    onFocus={() => { 
+                        setSearchFocused(true);
+                    }}
+                    onBlur={() => {
+                        setSearchFocused(false);
+                        setQuery('');
+                        setVisible(false);
+                        setData([]);
+                        setNotFound('');
+                    }}
                 />
             </View>
             <SearchModel visible={visible} data={data} notFound={notFound} />

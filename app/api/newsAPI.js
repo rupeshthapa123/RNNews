@@ -3,14 +3,12 @@ import Client from "./Client";
 const getAll = async () => {
     try {
         const response = await Client.get('/news')
-
         if (response.data.success) {
             return response.data.news
         }
-
     } catch (error) {
-        return [];
         console.log("Error while getting all news", error.message);
+        return [];
     }
 }
 
@@ -24,8 +22,8 @@ const getByCategory = async (category, qty) => {
         }
     }
     catch (error) {
-        return [];
         console.log('Error while getting categories news.', error.message);
+        return [];
     }
 }
 
@@ -37,7 +35,8 @@ const getSingle = async (id) => {
         }
     }
     catch (error) {
-        console.log('error while getting single news', error)
+        console.log('error while getting single news', error);
+        return [];
     }
 }
 

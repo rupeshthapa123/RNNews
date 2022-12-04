@@ -11,7 +11,7 @@ import useNews from "../../hooks/useNews";
 import ActivityIndicator from '../common/ActivityIndicator';
 
 const Home = () => {
-    const [isSearchedFocused, setIsSearchedFocused] = useState(false);
+    const [isSearchFocused, setSearchFocused] = useState(false);
 
     const [
         featuredNews,
@@ -24,15 +24,15 @@ const Home = () => {
 
     return (
         <>
-        <ActivityIndicator visible={loading}/>
-        <Screen isSearchedFocused={isSearchedFocused}>
-            <SearchBar setIsSearchedFocused = {setIsSearchedFocused}/>
-            <FeaturedNews item={featuredNews} />
-            <BreakingNews data={breakingNews} />
-            <PoliticalNews data={politicalNews} />
-            <TechNews data={techNews} />
-            <EntertainmentNews data={entertainmentNews} />
-        </Screen>
+            <ActivityIndicator visible={loading} />
+            <Screen isSearchFocused={isSearchFocused}>
+                <SearchBar setSearchFocused={setSearchFocused} />
+                <FeaturedNews item={featuredNews} />
+                <BreakingNews data={breakingNews} />
+                <PoliticalNews data={politicalNews} />
+                <TechNews data={techNews} />
+                <EntertainmentNews data={entertainmentNews} />
+            </Screen>
         </>
     )
 }

@@ -8,7 +8,7 @@ const ActivityIndicator = ({visible}) => {
     if (!visible) return null;
     return (
     <View style={styles.container}>
-        <LottieView source={require('../../../assets/loading.json')} autoplay loop></LottieView>
+        <LottieView source={require('../../../assets/loading.json')} autoplay loop/>
     </View>
     )
 }
